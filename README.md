@@ -15,7 +15,7 @@ Usage
     <head>
     <script src="/path/to/jquery.js" type="text/javascript"></script>
     <script src="/path/to/tagscroller.js" type="text/javascript"></script>
-    <link href="/path/to/tagscroller.js" type="text/css" rel="stylesheet" />
+    <link href="/path/to/tagscroller.css" type="text/css" rel="stylesheet" />
 
     <script>
     $(function() {
