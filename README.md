@@ -18,6 +18,10 @@ Usage
 
     <script>
     $(function() {
+        options = { tag : "obama",
+                    num : 3,
+                    width : 200,
+                    height : 100 };
         $("div#tagscroller").tagscroller(options);
     });
     </script>
