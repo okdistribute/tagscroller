@@ -18,7 +18,7 @@ Usage
 
     <script>
     $(function() {
-        options = { tag : "obama",
+        var options = { tag : "obama",
                     num : 3,
                     width : 200,
                     height : 100 };
