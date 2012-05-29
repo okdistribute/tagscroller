@@ -13,15 +13,16 @@ Usage
    
     <html>
     <head>
-    <script src="/path/to/tagscroller.js" type="text/javascript"></script>
     <script src="/path/to/jquery.js" type="text/javascript"></script>
+    <script src="/path/to/tagscroller.js" type="text/javascript"></script>
+    <link href="/path/to/tagscroller.js" type="text/css" rel="stylesheet" />
 
     <script>
     $(function() {
         var options = { tag : "obama",
-                    num : 3,
-                    width : 200,
-                    height : 100 };
+                        num : 3,
+                        width : 200,
+                        height : 100 };
         $("div#tagscroller").tagscroller(options);
     });
     </script>
