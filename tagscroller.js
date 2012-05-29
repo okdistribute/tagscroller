@@ -15,34 +15,39 @@
                 throw "Must give 'tag' as an option to tagscroller. Check http://github.com/krmckelv/tagscroller for a demo."
             }
             var num = options.num;
-            var width = options["width"];
-            var height = options["height"]; 
+            var width = options.width;
+            var height = options.height; 
+
+            var div = $(this);
 
             var url = "http://api.tagdef.com/" + tag + ".json?no404=1";
 
-            $.getJSON(url, function(data) {
-                
+            function readData(data) {
                 //tagdef api spec on May 29, 2012:
                 //data := {"num_defs" : # , "defs" : [ def1, def2, def3, ...]}
                 //def  := {"def": { "text" : str,  "time": str, "upvotes": #,
                 //                   "downvotes": #, "uri" : str, "hashtag" : str}}
-                
+
                 var num_defs = data.num_defs;
                 var defs = data.defs; 
 
                 if (num_defs == undefined){
-                     this.text("Add a defintion at " + data.defs.def.uri);
+                    div.html("Add a defintion at " + defs.def.uri);
                 }
                 else
-                    {
-                        this.text(defs.def.text);
+                {
+                    var text = defs[0].def.text;
+                    div.html("<p>" + text + "</p>");
                 }
 
-                defs.each(function() {
+            }
 
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "jsonp",
+                success:readData
 
-
-                });
             });
 
         });
