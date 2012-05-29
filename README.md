@@ -1,9 +1,10 @@
-tagdef-scroll
+tagscroller
 =============
 
 tagdef.com scrolling widget
 
-This widget takes a 
+This widget takes a Twitter hashtag and uses the tagdef.com API to look up
+definitions for the tag. It then scrolls them in a small widget.
 
 Requires jQuery
 
@@ -31,9 +32,11 @@ Usage
 
 
 
-Options (dict):
+Options (default):
  *    *tag* (required): Tag to scroll
- *    *num*: Number of tags to scroll. Default: 0 (no limit)
+ *    *num* (0) : Number of tags to scroll.
+ *    *width* (450): Width of widget 
+ *    *height* (200): Height of widget 
 
 
 
