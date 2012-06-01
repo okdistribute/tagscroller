@@ -20,7 +20,7 @@ Usage
     <script>
     $(function() {
         var options = { tag : "obama",
-                        num : 3,
+                        max : 3,
                         width : 200,
                         height : 100 };
         $("div#tagscroller").tagscroller(options);
@@ -39,7 +39,7 @@ Usage
 
 Options (default):
  *    *tag* (required): Tag to scroll
- *    *num* (0) : Number of tags to scroll.
+ *    *max* (0) : Max number of tags to scroll.
  *    *width* (450): Width of widget 
  *    *height* (200): Height of widget 
 
