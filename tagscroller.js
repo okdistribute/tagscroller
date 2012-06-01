@@ -3,9 +3,10 @@
     $.fn.tagscroller = function(args) {
 
         var options = $.extend({
-            'num' : 0,
+            'max' : 0,
             'width' : 450,
-            'height' : 200 
+            'height' : 200,
+            'speed' : 2000
         }, args);
 
         return this.each(function() {
@@ -14,12 +15,8 @@
             {
                 throw "Must give 'tag' as an option to tagscroller. Check http://github.com/krmckelv/tagscroller for a demo."
             }
-            var num = options.num;
-            var width = options.width;
-            var height = options.height; 
 
             var div = $(this);
-
             var url = "http://api.tagdef.com/" + tag + ".json?no404=1";
 
             function readData(data) {
@@ -36,8 +33,16 @@
                 }
                 else
                 {
-                    var text = defs[0].def.text;
-                    div.html("<p>" + text + "</p>");
+                    var max = Math.min(options.max, num_defs);
+                    if (options.max == 0) max = num_defs;
+                    var i = 0;
+                    var text;
+                    for(i; i < max; i++) {
+                        text = defs[i].def.text;
+                        div.append("<li>" + i + text + "</li>");
+                    }
+                    div.slideUp(options.speed).delay(50);
+                    div.slideDown(options.speed).delay(50);
                 }
 
             }
@@ -47,7 +52,6 @@
                 url: url,
                 dataType: "jsonp",
                 success:readData
-
             });
 
         });
