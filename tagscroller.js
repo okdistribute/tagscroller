@@ -33,16 +33,40 @@
                 }
                 else
                 {
-                    var max = Math.min(options.max, num_defs);
-                    if (options.max == 0) max = num_defs;
-                    var i = 0;
+                    //do not pass max in options
+                    var max;
+                    if (options.max == 0)
+                        max = num_defs;
+                    else
+                        max = Math.min(options.max, num_defs);
+
                     var text;
+                    var i = 0;
+
+                    //initialize the list
                     for(i; i < max; i++) {
                         text = defs[i].def.text;
-                        div.append("<li>" + i + text + "</li>");
+                        div.append("<li style='display:none'>" + text + "</li>");
                     }
-                    div.slideUp(options.speed).delay(50);
-                    div.slideDown(options.speed).delay(50);
+
+
+                    //scroll
+                    function scroll(index) {
+
+                        var li_item;
+
+                        if (i == max) i = 0;
+
+                        li_item = div.find("li:eq(" + i + ")");
+
+                        li_item.fadeIn(options.speed, function() {
+                            i++;
+                            li_item.fadeOut(options.speed);
+                            scroll(i);
+                        });
+                    }
+
+                    scroll(0);
                 }
 
             }
