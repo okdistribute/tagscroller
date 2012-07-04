@@ -6,8 +6,9 @@
             'max' : 0,
             'width' : 450,
             'height' : 200,
-            'speed' : 2000,
+            'speed' : 4000,
             'cut' : 0,
+            'css' : 'tag'
         }, args);
 
         return this.each(function() {
@@ -59,6 +60,7 @@
                         ul.append("<li class='item'>" + text + "</li>");
                     }
 
+                    ul.children("li").each(function(i, e) { $(e).addClass(options.css); });
 
                     //scroll
                     function scroll(index) {
