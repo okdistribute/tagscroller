@@ -6,7 +6,8 @@
             'max' : 0,
             'width' : 450,
             'height' : 200,
-            'speed' : 2000
+            'speed' : 2000,
+            'cut' : 0,
         }, args);
 
         return this.each(function() {
@@ -46,13 +47,13 @@
 
                     var text;
                     var i = 0;
-                    def_length = 60;
+
 
                     //initialize the list
                     for(i; i < max; i++) {
                         text = defs[i].def.text;
-                        if (text.length > def_length) { 
-                            text = text.substr(0, def_length);
+                        if (options.cut != 0 && text.length > options.cut) { 
+                            text = text.substr(0, options.cut);
                             text = text + "..."
                         }
                         ul.append("<li class='item'>" + text + "</li>");
