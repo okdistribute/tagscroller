@@ -22,7 +22,8 @@ Usage
         var options = { tag : "obama",
                         max : 3,
                         width : 200,
-                        height : 100 };
+                        height : 100,
+                        cut: 60 };
         $("div#tagscroller").tagscroller(options);
     });
     </script>
@@ -42,6 +43,8 @@ Options (default):
  *    *max* (0) : Max number of tags to scroll.
  *    *width* (450): Width of widget 
  *    *height* (200): Height of widget 
+ *    *cut* (0): The number of characters to cut long definitions.
+ *    *css* (null): The css rule to use for each item definition.
 
 
 
