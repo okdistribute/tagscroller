@@ -17,6 +17,10 @@
             }
 
             var div = $(this);
+            div.width(options.width);
+            div.height(options.height);
+            div.append("<ul class='tagscroller'>");
+            var ul = div.find("ul");
             var url = "http://api.tagdef.com/" + tag + ".json?no404=1";
 
             function readData(data) {
@@ -42,11 +46,16 @@
 
                     var text;
                     var i = 0;
+                    def_length = 60;
 
                     //initialize the list
                     for(i; i < max; i++) {
                         text = defs[i].def.text;
-                        div.append("<li style='display:none'>" + text + "</li>");
+                        if (text.length > def_length) { 
+                            text = text.substr(0, def_length);
+                            text = text + "..."
+                        }
+                        ul.append("<li class='item'>" + text + "</li>");
                     }
 
 
@@ -59,11 +68,12 @@
 
                         li_item = div.find("li:eq(" + i + ")");
 
-                        li_item.fadeIn(options.speed, function() {
-                            i++;
-                            li_item.fadeOut(options.speed);
-                            scroll(i);
-                        });
+                        li_item.addClass("scroll");
+                        setTimeout(function() {
+                                li_item.removeClass("scroll");
+                                i++;
+                                scroll(i);
+                        }, options.speed);
                     }
 
                     scroll(0);
