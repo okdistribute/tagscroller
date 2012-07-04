@@ -44,7 +44,7 @@ Options (default):
  *    *width* (450): Width of widget 
  *    *height* (200): Height of widget 
  *    *cut* (0): The number of characters to cut long definitions.
- *    *css* (null): The css rule to use for each item definition.
+ *    *css* (tag): The css rule to use for each item definition.
 
 
 
