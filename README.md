@@ -40,11 +40,12 @@ Usage
 
 Options (default):
  *    *tag* (required): Tag to scroll
- *    *max* (0) : Max number of tags to scroll.
- *    *width* (450): Width of widget 
- *    *height* (200): Height of widget 
+ *    *max* (0) : Max number of defintions to scroll
+ *    *width* (450): Width
+ *    *height* (200): Height
  *    *cut* (0): The number of characters to cut long definitions.
  *    *css* (tag): The css rule to use for each item definition.
+ *    *votes* (true): Show the upvotes and downvotes for each definition
 
 
 

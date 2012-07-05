@@ -1,13 +1,39 @@
-
 .tagscroller .item {
     display: none;
 }
 
 .tagscroller li {
     list-style: none;
-
 }
 
 .tagscroller .scroll {
     display: block;
+}
+
+.tagscroller .votes {
+    float:right;
+    width:5%;
+    text-align: center;
+}
+.tagscroller .text {
+    float: left;
+    width: 95%;
+}
+
+.tagscroller .upvotes {
+}
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #666;
+}
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #666;
 }

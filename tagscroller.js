@@ -8,7 +8,8 @@
             'height' : 200,
             'speed' : 4000,
             'cut' : 0,
-            'css' : 'tag'
+            'css' : 'tag',
+            'votes' : true
         }, args);
 
         return this.each(function() {
@@ -49,33 +50,50 @@
                     var text;
                     var i = 0;
 
-
-                    //initialize the list
+                    //populate the list with definitions
                     for(i; i < max; i++) {
-                        text = defs[i].def.text;
+                        def = defs[i].def;
+
+                        text = def.text
+
+                        //cut the text to length
                         if (options.cut != 0 && text.length > options.cut) { 
                             text = text.substr(0, options.cut);
                             text = text + "..."
                         }
-                        ul.append("<li class='item'>" + text + "</li>");
-                    }
 
-                    ul.children("li").each(function(i, e) { $(e).addClass(options.css); });
+                        //append the definition item
+                        text_item = $("<div class='text'>" + text + "</li>");
+                        item = $("<li class='item " + options.css + "'>");
+
+                        if(options.votes) {
+                            arrow_down = $("<a>").attr("href", def.uri).attr("target", "_blank").append("<div class='arrow-down'>");
+                            arrow_up = $("<a>").attr("href", def.uri).attr("target", "_blank").append("<div class='arrow-up'>");
+                            votes_item = $("<div class='votes'>")
+                                            .append(arrow_up).append(def.upvotes)
+                                            .append("<br>")
+                                            .append(def.downvotes).append(arrow_down);
+                            item.append(votes_item);
+                        }
+
+                        item.append(text_item);
+                        ul.append(item);
+                    }
 
                     //scroll
                     function scroll(index) {
 
                         var li_item;
 
-                        if (i == max) i = 0;
+                        if (index == max) index = 0;
 
-                        li_item = div.find("li:eq(" + i + ")");
-
+                        li_item = ul.find("li:eq(" + index + ")");
                         li_item.addClass("scroll");
+
                         setTimeout(function() {
                                 li_item.removeClass("scroll");
-                                i++;
-                                scroll(i);
+                                index++;
+                                scroll(index);
                         }, options.speed);
                     }
 
