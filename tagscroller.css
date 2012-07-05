@@ -11,13 +11,13 @@
 }
 
 .tagscroller .votes {
-    float:right;
+    float:left;
     width:5%;
     text-align: center;
 }
 .tagscroller .text {
-    float: left;
-    width: 95%;
+    float: right;
+    width: 90%;
 }
 
 .tagscroller .upvotes {
