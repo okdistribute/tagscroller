@@ -8,11 +8,14 @@
 
 .tagscroller .votes {
     float:left;
-    width:5%;
-    text-align: center;
+    width:7%;
+    text-align: left;
 }
 .tagscroller .text {
     float: right;
+}
+
+.tagscroller .with-votes {
     width: 90%;
 }
 
