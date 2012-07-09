@@ -22,8 +22,8 @@
             var div = $(this);
             div.width(options.width);
             div.height(options.height);
-            div.append("<ul class='tagscroller'>");
-            var ul = div.find("ul");
+            div.append("<div class='tagscroller'>");
+            var tag_div = div.find(".tagscroller");
             var url = "http://api.tagdef.com/" + tag + ".json?no404=1";
 
             function readData(data) {
@@ -63,8 +63,8 @@
                         }
 
                         //append the definition item
-                        text_item = $("<div class='text'>" + text + "</li>");
-                        item = $("<li class='item " + options.css + "'>");
+                        text_item = $("<div class='text'>" + text + "</div>");
+                        item = $("<div class='item " + options.css + "'>");
 
                         if(options.votes) {
                             arrow_down = $("<a>").attr("href", def.uri).attr("target", "_blank").append("<div class='arrow-down'>");
@@ -77,17 +77,17 @@
                         }
 
                         item.append(text_item);
-                        ul.append(item);
+                        tag_div.append(item);
                     }
 
+                    li_items = tag_div.children();
                     //scroll
                     function scroll(index) {
 
-                        var li_item;
-
                         if (index == max) index = 0;
 
-                        li_item = ul.find("li:eq(" + index + ")");
+                        var li_item = $(li_items[index]);
+
                         li_item.addClass("scroll");
 
                         setTimeout(function() {
