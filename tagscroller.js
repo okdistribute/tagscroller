@@ -36,7 +36,8 @@
                 var defs = data.defs; 
 
                 if (num_defs == undefined){
-                    div.html("Add a defintion at " + defs.def.uri);
+                    url = $("<a>").attr("href", defs.def.uri).attr("target", "_blank").append("No defintion found for " + options["tag"]);
+                    tag_div.append(url);
                 }
                 else
                 {
@@ -74,6 +75,7 @@
                                             .append("<br>")
                                             .append(def.downvotes).append(arrow_down);
                             item.append(votes_item);
+                            text_item.addClass("with-votes");
                         }
 
                         item.append(text_item);
@@ -81,6 +83,7 @@
                     }
 
                     li_items = tag_div.children();
+
                     //scroll
                     function scroll(index) {
 
@@ -97,7 +100,12 @@
                         }, options.speed);
                     }
 
-                    scroll(0);
+                    if(li_items.length > 1){
+                        scroll(0);
+                    }
+                    else{
+                        tag_div.children().addClass("scroll");
+                    }
                 }
 
             }
