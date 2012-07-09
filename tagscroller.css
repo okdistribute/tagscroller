@@ -2,10 +2,6 @@
     display: none;
 }
 
-.tagscroller li {
-    list-style: none;
-}
-
 .tagscroller .scroll {
     display: block;
 }
@@ -20,14 +16,12 @@
     width: 90%;
 }
 
-.tagscroller .upvotes {
-}
 .arrow-up {
     width: 0; 
     height: 0; 
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #666;
+    border-bottom: 10px solid #F89406;
 }
 
 .arrow-down {
@@ -35,5 +29,5 @@
     height: 0; 
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid #666;
+    border-top: 10px solid #08C;
 }
