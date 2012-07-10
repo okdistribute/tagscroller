@@ -8,8 +8,8 @@
 
 .tagscroller .votes {
     float:left;
-    width:7%;
-    text-align: left;
+    width:5%;
+    text-align: center;
 }
 .tagscroller .text {
     float: right;
