@@ -4,9 +4,9 @@
 
         var options = $.extend({
             'max' : 0,
-            'width' : 450,
-            'height' : 200,
-            'speed' : 4000,
+            'width' : 400,
+            'height' : 100,
+            'speed' : 10000,
             'cut' : 0,
             'css' : 'tag',
             'votes' : true
