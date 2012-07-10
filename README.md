@@ -3,8 +3,9 @@ tagscroller
 
 tagdef.com scrolling widget
 
-This widget takes a Twitter hashtag and uses the tagdef.com API to look up
-definitions for the tag. It then scrolls them in a small widget.
+This jquery widget takes a Twitter hashtag and uses the tagdef.com API to look up
+definitions for the tag. It then scrolls them one at a time in a div. An example
+of its usage can be seen at http://truthy.indiana.edu
 
 Requires jQuery
 
