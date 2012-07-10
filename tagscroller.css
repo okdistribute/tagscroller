@@ -1,10 +1,36 @@
-.definition-area{margin-top:0px;}
-.definition-area p{color:#6f97a7;}
-.definition-area .tag-definition-box{margin-bottom:20px;margin-top:10px;background:#c5e5ef;border:1px solid #6f97a7;}
-.tag-definition{padding: 10px 10px 10px 20px;min-height:70px;}
-.tag-definition p{color:#6f97a7;font-size:1.8em;width: 395px;padding:0;margin:0; float: left;}
-.tag-definition p a{color:#6f97a7;}
-.vote-down input {float: right; margin-top: 7px; margin-left:6px;}
-.vote-up {margin-bottom: 5px;}
-.vote-up input {float: right; margin-top: 4px; margin-left:6px;}
-.tag-definition-box .tag-vote{float:right;text-align:right;color:#fff;font-size:3em;font-weight:bold;position:relative; width: 120px;}
+.tagscroller .item {
+    display: none;
+}
+
+.tagscroller .scroll {
+    display: block;
+}
+
+.tagscroller .votes {
+    float:left;
+    width:7%;
+    text-align: left;
+}
+.tagscroller .text {
+    float: right;
+}
+
+.tagscroller .with-votes {
+    width: 90%;
+}
+
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #F89406;
+}
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #08C;
+}

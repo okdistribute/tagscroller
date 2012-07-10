@@ -6,7 +6,10 @@
             'max' : 0,
             'width' : 450,
             'height' : 200,
-            'speed' : 2000
+            'speed' : 4000,
+            'cut' : 0,
+            'css' : 'tag',
+            'votes' : true
         }, args);
 
         return this.each(function() {
@@ -17,6 +20,10 @@
             }
 
             var div = $(this);
+            div.width(options.width);
+            div.height(options.height);
+            div.append("<div class='tagscroller'>");
+            var tag_div = div.find(".tagscroller");
             var url = "http://api.tagdef.com/" + tag + ".json?no404=1";
 
             function readData(data) {
@@ -29,7 +36,8 @@
                 var defs = data.defs; 
 
                 if (num_defs == undefined){
-                    div.html("Add a defintion at " + defs.def.uri);
+                    url = $("<a>").attr("href", defs.def.uri).attr("target", "_blank").append("No defintion found for " + options["tag"]);
+                    tag_div.append(url);
                 }
                 else
                 {
@@ -43,30 +51,61 @@
                     var text;
                     var i = 0;
 
-                    //initialize the list
+                    //populate the list with definitions
                     for(i; i < max; i++) {
-                        text = defs[i].def.text;
-                        div.append("<li style='display:none'>" + text + "</li>");
+                        def = defs[i].def;
+
+                        text = def.text
+
+                        //cut the text to length
+                        if (options.cut != 0 && text.length > options.cut) { 
+                            text = text.substr(0, options.cut);
+                            text = text + "..."
+                        }
+
+                        //append the definition item
+                        text_item = $("<div class='text'>" + text + "</div>");
+                        item = $("<div class='item " + options.css + "'>");
+
+                        if(options.votes) {
+                            arrow_down = $("<a>").attr("href", def.uri).attr("target", "_blank").append("<div class='arrow-down'>");
+                            arrow_up = $("<a>").attr("href", def.uri).attr("target", "_blank").append("<div class='arrow-up'>");
+                            votes_item = $("<div class='votes'>")
+                                            .append(arrow_up).append(def.upvotes)
+                                            .append("<br>")
+                                            .append(def.downvotes).append(arrow_down);
+                            item.append(votes_item);
+                            text_item.addClass("with-votes");
+                        }
+
+                        item.append(text_item);
+                        tag_div.append(item);
                     }
 
+                    li_items = tag_div.children();
 
                     //scroll
                     function scroll(index) {
 
-                        var li_item;
+                        if (index == max) index = 0;
 
-                        if (i == max) i = 0;
+                        var li_item = $(li_items[index]);
 
-                        li_item = div.find("li:eq(" + i + ")");
+                        li_item.addClass("scroll");
 
-                        li_item.fadeIn(options.speed, function() {
-                            i++;
-                            li_item.fadeOut(options.speed);
-                            scroll(i);
-                        });
+                        setTimeout(function() {
+                                li_item.removeClass("scroll");
+                                index++;
+                                scroll(index);
+                        }, options.speed);
                     }
 
-                    scroll(0);
+                    if(li_items.length > 1){
+                        scroll(0);
+                    }
+                    else{
+                        tag_div.children().addClass("scroll");
+                    }
                 }
 
             }
